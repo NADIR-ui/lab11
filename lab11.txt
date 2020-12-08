@@ -1,0 +1,53 @@
+lab11:
+
+1/
+sudo apt install gcc-arm-linux-gnueabi (installation de la chaine de cross compilation)
+
+2/ Chemin d'accès au cross compilateur et le nom de l'éxécutable:
+
+dpkg -L gcc-arm-linux-gnueabi
+
+/usr/bin/arm-linux-gnueabi-gcc
+
+3/
+cd 
+vim .bashrc
+
+export ARCH=arm
+export CROSS_COMPILE=arm_linux_gnueabi
+
+echo $ARCH
+arm
+
+echo $CROSS_COMPILE
+arm-linux-gnueabi-
+
+4/
+cd Desktop
+
+arm-+tab affiche le nom complet arm-linux-gnueabi-
+
+5/
+cp makefile *.c *.h ../lab11
+CC = $(CROSS_COMPILE)gcc on va avoir (arm-linux-gnueabi-gcc)
+
+6/
+make clean
+make
+
+arm-linux-gnueabi-gcc  max.o min.o var.o test.o -o My-binaire
+RELEASE MODE
+mv My-binaire /home/nadir
+
+On constate bien que c'est le cross compilateur qui est appelé arm-linux-gnueabi-gcc
+
+7/
+./My-binaire
+bash: ./My-binaire: cannot execute binary file: Exec format error
+
+le fichier binaire ne peut pas s'éxécuter sur la machine, mais sur la carte qu'il va s'éxécuter
+
+
+
+
+
